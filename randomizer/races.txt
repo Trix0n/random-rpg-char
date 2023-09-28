@@ -1,0 +1,52 @@
+These races use the modern trait for ability score increases of +2/+1 or +1 to 3.
+
+
+Dragonlance: Shadow of the Dragon Queen
+=================================================
+Kender
+
+Mordenkainen Presents: Monsters of the Multiverse
+=================================================
+Aarakocra
+Aasimar
+Air Genasi
+Bugbear
+Centaur
+Changling
+Deep Gnome
+Duergar
+Earth Genasi
+Eladrin
+Fairy
+Firbolg
+Fire Genasi
+Githyanki
+Githzerai
+Goblin
+Goliath
+Harengon
+Lizardfolk
+Minotaur
+Orc
+Satyr
+Sea Elf
+Shadar-Kai
+Shifter
+Tabaxi
+Tortle
+Triton
+Water Genasi
+Yuan-ti
+
+Spelljammer
+=================================================
+Astral Elf
+Autognome
+Giff
+Hadozee
+Plasmoid
+Thri-kreen
+
+Strixhaven: A Curriculum of Chaos
+=================================================
+Owlin
