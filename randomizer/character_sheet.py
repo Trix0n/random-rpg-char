@@ -1,7 +1,7 @@
 """Initialize the character sheet here and import for use"""
 
 character_sheet = {
-    "class": [None],
+    "class": [],
     "level": [0],
     "race": None,
     "alignment": None,

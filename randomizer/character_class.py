@@ -21,7 +21,7 @@ def multiclass():
     #TODO: Set limit to multiclassing
     #TODO: Make multiclassing limit toggleable
     set_class()
-    if character_sheet["level"] > 1 and character_sheet["level"] < 20:
+    if character_sheet["level"][0] > 1 and character_sheet["level"][0] < 20:
         heads_or_tails = random.randint(1,2)
         if heads_or_tails == 1:
             set_class()
@@ -30,11 +30,11 @@ def multiclass():
 def set_class():
     """Randomly selects a class from the list of available classes"""
     classes = ["Artificer", "Barbarian", "Bard", "Blood Hunter", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"]
-    if character_sheet["class"] is not None:
-        classes.pop(character_sheet["class"])
-        character_sheet["class"] += random.choice(classes)
+    if character_sheet["class"]:
+        classes.remove(character_sheet["class"][0])
+        character_sheet["class"] += [random.choice(classes)]
     else:
-        character_sheet["class"] = random.choice(classes)
+        character_sheet["class"] = [random.choice(classes)]
 
 def set_class_skills():
     """Randomly chooses from the list of class skills which ones they are proficient in"""

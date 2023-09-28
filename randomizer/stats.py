@@ -65,17 +65,18 @@ def set_initiative():
 def set_level():
     """Set random character level from 1 to 20"""
     level = random.randint(1,20)
-    character_sheet["level"] = level
+    character_sheet["level"] = [level]
     character_sheet["hit dice"] = level
 
 def set_multiclass_level():
     level_cap = 20 - character_sheet["level"][0]
-    character_sheet["level"].append(random.randint(1,level_cap))
+    character_sheet["level"].append(random.randint(1, level_cap))
+    character_sheet["hit dice"] = character_sheet["level"][0] + character_sheet["level"][1]
 
 def set_proficiency_bonus():
     """Proficiency bonus determined by level
     Divide by 4, round up, add 1"""
-    bonus = math.ceil(character_sheet["level"]/4) + 1
+    bonus = math.ceil(character_sheet["level"][0]/4) + 1
     character_sheet["proficiency bonus"] = bonus
 
 def set_saving_throws():
@@ -89,9 +90,3 @@ def set_skill_modifiers():
 def set_speed():
     """Determined by selected race"""
     pass
-
-set_level()
-set_proficiency_bonus()
-roll_stats()
-set_initiative()
-print(character_sheet)
