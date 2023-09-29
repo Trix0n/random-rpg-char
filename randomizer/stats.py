@@ -58,6 +58,11 @@ def roll_stats():
         total = sum(rolls)
         character_sheet["stats"][stat] = total
 
+def set_alignment():
+    """Not a stat but easier to include here. Sets alignment based on classic alignment square chart"""
+    alignments = ["Lawful Good", "Lawful Neutral", "Lawful Evil", "Neutral Good", "True Neutral", "Neutral Evil", "Chaotic Good", "Chaotic Neutral", "Chaotic Evil"]
+    character_sheet["alignment"] = random.choice(alignments)
+
 def set_initiative():
     """Sets base initiative using dex modifier"""
     character_sheet["initiative"] = get_ability_modifier("dexterity")
