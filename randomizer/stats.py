@@ -76,7 +76,10 @@ def set_multiclass_level():
 def set_proficiency_bonus():
     """Proficiency bonus determined by level
     Divide by 4, round up, add 1"""
-    bonus = math.ceil(character_sheet["level"][0]/4) + 1
+    total = 0
+    for level in character_sheet["level"]:
+        total += level
+    bonus = math.ceil(total/4) + 1
     character_sheet["proficiency bonus"] = bonus
 
 def set_saving_throws():
