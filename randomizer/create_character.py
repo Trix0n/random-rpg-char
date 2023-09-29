@@ -13,6 +13,7 @@ Runs through methods throughout the project in a specific order so characters ar
 stats.roll_stats()
 stats.set_level()
 character_class.multiclass()
+stats.set_alignment()
 stats.set_initiative()
 stats.set_proficiency_bonus()
 print(character_sheet)
