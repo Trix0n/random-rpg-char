@@ -12,10 +12,27 @@ Pulls from necessary databases to update stats properly such as ability score in
 
 def ability_increase_level_up():
     """Ability score increase for leveling up, depending on class
-    Generally includes +1 to any ability at level 4, 8, 12, and 16
-    +2 to any ability score or +1 to any two ability scores at level 19
-    Can't go above 20 due to ability increase"""
-    pass
+    Generally includes +2 to any one ability score or +1 to any two ability scores
+    at level 4, 8, 12, 16, and 19. Can't go above 20 due to ability increase"""
+
+    # Fighters get increases at 6th and 14th levels as well
+    # Rogues get an increase at 10th level as well
+    increase_count = 0
+    for char_class in character_sheet["class"]:
+        for level in range(1, character_sheet["level"][character_sheet["class"].index(char_class)]):
+            if level == 4 or level == 8 or level == 12 or level == 16 or level == 19:
+                increase_count += 1
+            if (level == 6 or level == 14) and char_class == "Fighter":
+                increase_count += 1
+            if level == 10 and char_class == "Rogue":
+                increase_count += 1
+
+        while increase_count > 0:
+            abilities = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
+            heads_or_tails = random.randint(1,2)
+            random_ability_choice(abilities, heads_or_tails, count=2)
+            increase_count -= 1
+
 
 def armor_class():
     """Sets AC based on dex modifier and equipment"""
@@ -37,6 +54,29 @@ def modify_initiative():
 def racial_plus_one_increase():
     """Some races get a defined +2 and then allow for +1 to any other stat."""
     pass
+
+def random_ability_choice(abilities, heads_or_tails, count=2):
+    if count == 0:
+        return
+    if heads_or_tails == 1:
+        ability = random.choice(abilities)
+        if character_sheet["stats"][ability] == 20:
+            abilities.remove(ability)
+            random_ability_choice(abilities, heads_or_tails, count)
+        else:
+            count -= 1
+            character_sheet["stats"][ability] += 1
+            abilities.remove(ability)
+            random_ability_choice(abilities, heads_or_tails, count)
+    else:
+        ability = random.choice(abilities)
+        if character_sheet["stats"][ability] >= 19:
+            abilities.remove(ability)
+            random_ability_choice(abilities, heads_or_tails, count)
+        else:
+            character_sheet["stats"][ability] += 2
+            return
+
 
 def roll_hit_points():
     """Max hit points for level 1
